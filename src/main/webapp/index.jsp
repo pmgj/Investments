@@ -16,11 +16,11 @@
             <form action="InvestmentsServlet" method="get">
                 <fieldset>
                     <legend>Investments</legend>
-                        <p><label>Starting amount: </label> <input type="number" min="0" step="0.01" name="amount" value="${param.amount}" /></p>
-                        <p><label>Monthly interest rate: </label> <input type="number" min="0" step="0.01" name="rate" value="${param.rate}" /></p>
-                        <p><label>Period in months: </label> <input type="number" min="0" name="period" value="${param.period}" /></p>
-                        <p><label>Additional contribution: </label> <input type="number" min="0" step="0.01" name="contribution" value="${param.contribution}" /></p>
-                        <p><input type="submit" />
+                        <p><label for="amount">Starting amount: </label> <input type="number" min="0" step="0.01" name="amount" id="amount" value="${param.amount}" /></p>
+                        <p><label for="rate">Monthly interest rate: </label> <input type="number" min="0" step="0.01" name="rate" id="rate" value="${param.rate}" /></p>
+                        <p><label for="period">Period in months: </label> <input type="number" min="0" name="period" id="period" value="${param.period}" /></p>
+                        <p><label for="contribution">Additional contribution: </label> <input type="number" min="0" step="0.01" name="contribution" id="contribution" value="${param.contribution}" /></p>
+                        <p><input type="submit" /></p>
                     </form>
                 </fieldset>        
             </form>

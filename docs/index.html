@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br">
+
+<head>
+    <title>Investments</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link type="text/css" rel="stylesheet" href="index.css" />
+    <link type="image/svg" rel="icon" href="favicon.svg" />
+    <script type="module" src="GUI.js"></script>
+</head>
+
+<body>
+    <form action="#">
+        <fieldset>
+            <legend>Investments</legend>
+            <p><label for="amount">Starting amount: </label> <input type="number" min="0" step="0.01" name="amount"
+                    id="amount" /></p>
+            <p><label for="rate">Monthly interest rate: </label> <input type="number" min="0" step="0.01" name="rate"
+                    id="rate" /></p>
+            <p><label for="period">Period in months: </label> <input type="number" min="0" name="period" id="period" />
+            </p>
+            <p><label for="contribution">Additional contribution: </label> <input type="number" min="0" step="0.01"
+                    name="contribution" id="contribution" /></p>
+    </form>
+    </fieldset>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>n</th>
+                <th>Contribution</th>
+                <th>Rate</th>
+                <th>Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th></th>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+
+</html>
