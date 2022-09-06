@@ -44,22 +44,19 @@ class GUI {
     }
     print(matrix) {
         let tbody = document.querySelector("tbody"), i;
+        let t = document.querySelector('#row');
+        let tds = t.content.querySelectorAll("td");
         for (i = 0; i < matrix.length - 1; i++) {
             let row = matrix[i];
             let tr = document.createElement("tr");
             for (let j = 0; j < row.length; j++) {
                 let cell = row[j];
-                this.createRows(tr, j === 0 ? cell : this.formatter.format(cell));
+                tds[j].textContent = j === 0 ? cell : this.formatter.format(cell);
             }
-            tbody.appendChild(tr);
+            let clone = document.importNode(t.content, true);
+            tbody.appendChild(clone);
         }
         this.setTotals(matrix[i]);
-    }
-    createRows(row, text) {
-        let cell = document.createElement("td");
-        let textNode = document.createTextNode(text);
-        cell.appendChild(textNode);
-        row.appendChild(cell);
     }
     setTotals(row) {
         let table = document.querySelector("table");
