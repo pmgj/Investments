@@ -15,12 +15,14 @@ class GUI {
     }
     compute() {
         let form = document.forms[0];
-        let amount = parseFloat(form.amount.value);
-        let period = parseInt(form.period.value, 10);
-        let rate = parseFloat(form.rate.value) / 100;
-        let contribution = parseFloat(form.contribution.value);
-        if (amount > 0 && period > 0 && rate > 0 && contribution > 0) {
+        let amount = form.amount.valueAsNumber;
+        let period = form.period.valueAsNumber;
+        let rate = form.rate.valueAsNumber / 100;
+        let contribution = form.contribution.valueAsNumber;
+        if ((amount > 0 || contribution > 0) && period > 0 && rate > 0) {
             this.cleanTable();
+            amount = (isNaN(amount)) ? 0 : amount;
+            contribution = (isNaN(contribution)) ? 0 : contribution;
             let result = this.innerCompute(amount, rate, contribution, period);
             this.print(result);
         }
@@ -48,7 +50,6 @@ class GUI {
         let tds = t.content.querySelectorAll("td");
         for (i = 0; i < matrix.length - 1; i++) {
             let row = matrix[i];
-            let tr = document.createElement("tr");
             for (let j = 0; j < row.length; j++) {
                 let cell = row[j];
                 tds[j].textContent = j === 0 ? cell : this.formatter.format(cell);
