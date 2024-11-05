@@ -11,6 +11,7 @@ class GUI {
         form.period.onkeyup = this.compute.bind(this);
         form.rate.onkeyup = this.compute.bind(this);
         form.contribution.onkeyup = this.compute.bind(this);
+        form.inflation.onkeyup = this.compute.bind(this);
         form.amount.focus();
     }
     compute() {
@@ -19,11 +20,13 @@ class GUI {
         let period = form.period.valueAsNumber;
         let rate = form.rate.valueAsNumber / 100;
         let contribution = form.contribution.valueAsNumber;
+        let inflation = form.inflation.valueAsNumber / 100;
         if ((amount > 0 || contribution > 0) && period > 0 && rate > 0) {
             this.cleanTable();
             amount = (isNaN(amount)) ? 0 : amount;
             contribution = (isNaN(contribution)) ? 0 : contribution;
-            let result = this.innerCompute(amount, rate, contribution, period);
+            inflation = (isNaN(inflation)) ? 0 : inflation;
+            let result = this.innerCompute(amount, rate, contribution, period, inflation);
             this.print(result);
         }
     }
@@ -31,12 +34,13 @@ class GUI {
         let tbody = document.querySelector("tbody");
         tbody.innerHTML = "";
     }
-    innerCompute(amount, rate, contribution, period) {
+    innerCompute(amount, rate, contribution, period, inflation) {
         let s = [];
         let juros = 0.0;
         s.push([0, 0, 0, amount]);
         for (let j = 1; j <= period; j++) {
             let rend = amount * rate;
+            contribution = j % 12 === 0 ? contribution * (1 + inflation) : contribution;
             juros += rend;
             amount += rend + contribution;
             s.push([j, contribution, rend, amount]);
